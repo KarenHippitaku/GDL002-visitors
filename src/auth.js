@@ -45,24 +45,6 @@ function signUpFirebase (e) {
 //SIGN UP BUTTON
 document.querySelector(".signUpBtn").addEventListener("click", signUpFirebase);
 
-<<<<<<< HEAD
-//LOG IN FIREBASE FUNCTION 
-function logInFirebase (e) {
-  e.preventDefault(e);
-
-  let emailLogIn = document.querySelector(".txtEmailLogIn").value;
-  let passwordLogIn = document.querySelector(".txtPasswordLogIn").value;
-
-  firebase.auth().signInWithEmailAndPassword(emailLogIn, passwordLogIn).catch(function(error) {
-    // Handle Errors here.
-    const errorCode = error.code;
-    const errorMessage = error.message;
-    // ...
-  });
-}
-//LOG IN BUTTON 
-document.querySelector(".btnLogIn").addEventListener("click", logInFirebase);
-=======
 //log in user
 const logInForm = document.querySelector("#logInForm");
 logInForm.addEventListener("click", (e) => {
@@ -82,7 +64,6 @@ logOut.addEventListener("click", (e) {
     console.log("User logged Out");
   });
 };
->>>>>>> 044b1d2fefd0245a66626e48386e3988f7c5a7a0
 
 //logout button
 document.querySelector("#logOutBtn").addEventListener("click", logOut);
