@@ -10,17 +10,28 @@
 
 <body>
   <header>
-    <button class="btn" id="goHomeBtn"type="button" name="button"></button>
-    <button class="btn" id="goToSignUp">Sign up</button>
-    <button class="btn" id="goToLogIn">Log in</button>
-    <button class="btn" id="logOutBtn" type="button" name="button">Log out</button>
+    <nav>
+      <button class="btn loggedIn" id="goHomeBtn"type="button" name="button"></button>
+      <button class="btn loggedOut" id="goToSignUp">Sign up</button>
+      <button class="btn loggedOut" id="goToLogIn">Log in</button>
+      <button class="btn loggedIn" id="logOutBtn" type="button" name="button">Log out</button>
+
+    </nav>
   </header>
 
-  <section class="visitorSign loggedOut">
+  <section class="visitorSign loggedIn">
     <!--VISITOR SIGN-->
     <h2 class="welcomeSign">Welcome to Digital Entry</h2>
     <p>Complete these steps to meet your host</p>
     <input type="text" class="inputTxt" name="visitorsName" value="" placeholder="Your name">
+    <div class="hostList">
+      <p>¿A quién visitas?</p>
+      <select class="hostOptions" id="hostSelector" name="hostSelector">
+        <option value="host">Laboratoria</option>
+        <option value="host">Code Academy</option>
+      </select>
+
+    </div>
     <input type="email" class="inputTxt" name="visitorsEmail" value="" placeholder="email">
     <div class="camera">
       <video id="video">Video stream not available</video>
@@ -34,23 +45,25 @@
     <button class="btn" id="visitorSignBtn" type="button" name="button">Register</button>
   </section>
 
+<section class="loggedOut AdminSign">
+  <p> Sign up to get the most of this app</p>
+  <form class="loggedOut" id="signUpForm">
+    <input type="text" class="inputTxt userName" name="userName" value="" placeholder="name">
+    <input type="email" class="txtEmailSignUp" placeholder="Email" required>
+    <input type="password" class="txtPasswordSignUp" placeholder="Password" required>
+    <button class="signUpBtn btn">Register</button>
+  </form>
 
+  <!--LOG IN FORM-->
+  <h5>Welcome back! We're happy to see you here</h5>
+  <form class="loggedOut" id="logInForm">
+    <input type="email" class="txtEmailLogIn" id="email" placeholder="Email">
+    <input type="password" class="txtPasswordLogIn" id="password" placeholder="Password">
+    <button class="logInBtn btn">Log in </button>
+  </form>
+
+</section>
 <!--SIGN UP FORM-->
-    <p> Sign up to get the most of this app</p>
-    <form id="signUpForm">
-      <input type="text" class="inputTxt userName" name="userName" value="" placeholder="name">
-      <input type="email" class="txtEmailSignUp" placeholder="Email">
-      <input type="password" class="txtPasswordSignUp" placeholder="Password">
-      <button class="signUpBtn btn">Register</button>
-    </form>
-
-<!--LOG IN FORM-->
-    <h5>Welcome back! We're happy to see you here</h5>
-    <form id="logInForm">
-      <input type="text" class="txtEmailLogIn" placeholder="Email">
-      <input type="text" class="txtPasswordLogIn" placeholder="Password">
-      <button class="logInBtn btn">Log in </button>
-    </form>
 
     <script src="https://www.gstatic.com/firebasejs/5.9.4/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/5.9.4/firebase-auth.js"></script>

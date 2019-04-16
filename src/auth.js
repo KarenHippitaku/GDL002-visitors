@@ -17,6 +17,31 @@ const config = {
   const auth = firebase.auth();
   const db = firebase.firestore();
 
+  // listen for auth status changes
+  auth.onAuthStateChanged(user => {
+    // console.log(user.uid);
+
+    if (user) {
+      alert(`Bienvenido ${user.name}`);
+      // console.log('user logged in', user);
+
+      // get data
+      // db.collection('guides').get().then(snapshot => {
+
+      // realtime listener (just subtitute .get().then whit .onSnapshot)
+      // db.collection('guides').onSnapshot(snapshot => {
+        // console.log(snapshot.docs);
+        // setupGuides(snapshot.docs);
+        setupUI(user);
+      // }).catch(err => {
+      //   console.log(err.message)
+      // });
+    } else {
+      // console.log('user logged out');
+      setupUI();
+      // setupGuides([]);
+    }
+  });
 
 //SIGN UP TO FIREBASE FUNCTION
 function signUpFirebase (e) {
@@ -51,22 +76,26 @@ logInForm.addEventListener("click", (e) => {
   e.preventDefault();
   const email = logInForm["email"].value;
   const password = logInForm["password"].value;
-  auth.signInWithEmailAndPassword(email, password).then(cred => {
+  auth.signInWithEmailAndPassword(email, password).then(function () {
+    console.log("User logged in");
     logInForm.reset();
-  });
+  }).catch(function (error) {
+        console.log(error.code);
+        console.log(error.message);
+    });
 });
 
 //log out user
-const logOut = document.querySelector("#logOutBtn");
-logOut.addEventListener("click", (e) {
+const loggingOut = document.querySelector('#logOutBtn');
+loggingOut.addEventListener("click", (e) => {
   e.preventDefault();
   auth.signOut().then(function () {
-    console.log("User logged Out");
+    console.log("User logged out");
   });
-};
+});
 
 //logout button
-document.querySelector("#logOutBtn").addEventListener("click", logOut);
+document.querySelector("#logOutBtn").addEventListener("click", loggingOut);
 
 //Para exportar a test
 module.exports = signUpFirebase;

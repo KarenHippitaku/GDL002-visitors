@@ -21,6 +21,10 @@ body {
   margin-left: 2rem;
 }
 
+nav {
+  border-bottom: solid #00bfa2;
+}
+
 #video {
   background-color: rgba(10, 10, 10, 0.5);
   /* border: 1px solid black; */
