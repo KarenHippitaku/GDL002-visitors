@@ -1,0 +1,22 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+html {
+  font-size: 20px; /* 1rem will equal this now */
+  line-height: 1.6;
+  font-family: sans-serif; /* add google fonts */
+}
+
+body {
+  /* background: url("https://drive.google.com/uc?export=view&id=13MdevlT6snYhCvoHxRcWdBnw_ebfijg4") center fixed repeat-x; /*log in background*/
+  /* -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  margin-left: 2rem; */
+}

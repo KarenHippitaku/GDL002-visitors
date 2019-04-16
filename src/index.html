@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" type="text/css" media="screen" href="style.css">
+    <title>Digital Entry</title>
+</head>
+
+<body>
+
+    <!--WELCOME SIGN-->
+    <h2 class="welcomeSign">Welcome to Digital Entry</h2>
+      <p>Complete these steps to meet your host</p>
+       <button class="btn">Sign up</button>
+       <button class="btn">Log in</button>
+
+
+<!--SIGN UP FORM-->
+    <p> Sign up to get the most of this app</p>
+    <form>
+      <!-- <input type="text" class="inputTxt" name="userName" value="" placeholder="name"> -->
+      <input type="text" class="txtEmailSignUp" placeholder="Email">
+      <input type="text" class="txtPasswordSignUp" placeholder="Password">
+      <button class="btnSignUp btn">Register</button>
+    </form>
+
+<!--LOG IN FORM-->
+    <p>Welcome back! We're happy to see you here</p>
+    <form>
+      <input type="text" class="txtEmailLogIn" placeholder="Email">
+      <input type="text" class="txtPasswordLogIn" placeholder="Password">
+      <button class="btnLogIn btn">Log in </button>
+    </form>
+
+    <script src="https://www.gstatic.com/firebasejs/5.9.4/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.9.4/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.9.4/firebase-firestore.js"></script>
+    <script src="auth.js"></script>
+    <script src="visitors.js"></script>
+</body>
+</html>
