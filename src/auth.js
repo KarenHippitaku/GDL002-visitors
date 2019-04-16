@@ -27,6 +27,19 @@ function signUpFirebase (e) {
 //SIGN UP BUTTON 
 document.querySelector(".btnSignUp").addEventListener("click", signUpFirebase);
 
+//LOG IN FIREBASE FUNCTION 
+function logInFirebase (e) {
+  e.preventDefault(e);
 
+  let emailLogIn = document.querySelector(".txtEmailLogIn").value;
+  let passwordLogIn = document.querySelector(".txtPasswordLogIn").value;
+
+  firebase.auth().signInWithEmailAndPassword(emailLogIn, passwordLogIn).catch(function(error) {
+    // Handle Errors here.
+    const errorCode = error.code;
+    const errorMessage = error.message;
+    // ...
+  });
+}
 
 
