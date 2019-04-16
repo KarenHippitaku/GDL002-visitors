@@ -1,0 +1,30 @@
+{
+  "name": "digital-entry",
+  "version": "1.0.0",
+  "description": "El registro de visitantes en una empresa en América Latina es un proceso tedioso\r y manual. Lo común es que una persona esté en la recepción tomando nota - a\r veces con papel y lápiz - de cada visitante. Por razones de seguridad,\r usualmente piden a cada visitante dejar una identificación. Si vivimos en la era\r digital, ¿por qué seguimos registrando visitantes como si fuera 1985? ¿Qué tal\r si sustituimos a la persona en recepción por una tablet? ¿Qué tal si en lugar de\r pedir una identificación, tomamos una foto?",
+  "main": "index.html",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "htmlhint": "htmlhint src/*.html test/*.html",
+    "eslint": "eslint --ext .js src/ test/",
+    "test": "jest --coverage"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KarenHippitaku/GDL002-visitors.git"
+  },
+  "author": "Karen Hippitaku y  Lucié Esparza",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/KarenHippitaku/GDL002-visitors/issues"
+  },
+  "homepage": "https://github.com/KarenHippitaku/GDL002-visitors#readme",
+  "dependencies": {
+    "eslint": "^5.16.0",
+    "eslint-plugin-jest": "^22.4.1",
+    "firebase": "^5.9.4",
+    "htmlhint": "^0.11.0"
+  }
+}
