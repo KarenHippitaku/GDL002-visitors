@@ -9,29 +9,47 @@
 </head>
 
 <body>
+  <header>
+    <button class="btn" id="goHomeBtn"type="button" name="button"></button>
+    <button class="btn" id="goToSignUp">Sign up</button>
+    <button class="btn" id="goToLogIn">Log in</button>
+    <button class="btn" id="logOutBtn" type="button" name="button">Log out</button>
+  </header>
 
-    <!--WELCOME SIGN-->
+  <section class="visitorSign loggedOut">
+    <!--VISITOR SIGN-->
     <h2 class="welcomeSign">Welcome to Digital Entry</h2>
-      <p>Complete these steps to meet your host</p>
-       <button class="btn">Sign up</button>
-       <button class="btn">Log in</button>
+    <p>Complete these steps to meet your host</p>
+    <input type="text" class="inputTxt" name="visitorsName" value="" placeholder="Your name">
+    <input type="email" class="inputTxt" name="visitorsEmail" value="" placeholder="email">
+    <div class="camera">
+      <video id="video">Video stream not available</video>
+      <button id="cameraBtn">Take a selfie</button>
+    </div>
+    <canvas id="canvas">
+    </canvas>
+    <div class="output">
+      <img id="photo" alt="The screen capture will appear in this box">
+    </div>
+    <button class="btn" id="visitorSignBtn" type="button" name="button">Register</button>
+  </section>
 
 
 <!--SIGN UP FORM-->
     <p> Sign up to get the most of this app</p>
-    <form>
-      <!-- <input type="text" class="inputTxt" name="userName" value="" placeholder="name"> -->
-      <input type="text" class="txtEmailSignUp" placeholder="Email">
-      <input type="text" class="txtPasswordSignUp" placeholder="Password">
-      <button class="btnSignUp btn">Register</button>
+    <form id="signUpForm">
+      <input type="text" class="inputTxt userName" name="userName" value="" placeholder="name">
+      <input type="email" class="txtEmailSignUp" placeholder="Email">
+      <input type="password" class="txtPasswordSignUp" placeholder="Password">
+      <button class="signUpBtn btn">Register</button>
     </form>
 
 <!--LOG IN FORM-->
-    <p>Welcome back! We're happy to see you here</p>
-    <form>
+    <h5>Welcome back! We're happy to see you here</h5>
+    <form id="logInForm">
       <input type="text" class="txtEmailLogIn" placeholder="Email">
       <input type="text" class="txtPasswordLogIn" placeholder="Password">
-      <button class="btnLogIn btn">Log in </button>
+      <button class="logInBtn btn">Log in </button>
     </form>
 
     <script src="https://www.gstatic.com/firebasejs/5.9.4/firebase-app.js"></script>
@@ -39,5 +57,6 @@
     <script src="https://www.gstatic.com/firebasejs/5.9.4/firebase-firestore.js"></script>
     <script src="auth.js"></script>
     <script src="visitors.js"></script>
+    <script src="index.js"></script>
 </body>
 </html>
