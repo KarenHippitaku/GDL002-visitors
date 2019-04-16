@@ -41,5 +41,7 @@ function logInFirebase (e) {
     // ...
   });
 }
+//LOG IN BUTTON 
+document.querySelector(".btnLogIn").addEventListener("click", logInFirebase);
 
 
