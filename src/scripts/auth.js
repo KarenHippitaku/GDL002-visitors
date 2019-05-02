@@ -22,24 +22,29 @@ const config = {
     // console.log(user.uid);
 
     if (user) {
-      alert(`Bienvenido ${user.name}`);
+      alert(`Bienvenido administrador: ${user.email}`);
       // console.log('user logged in', user);
 
       // get data
-      // db.collection('guides').get().then(snapshot => {
+      // db.collection('visitors').get().then(snapshot => {
 
       // realtime listener (just subtitute .get().then whit .onSnapshot)
-      // db.collection('guides').onSnapshot(snapshot => {
+      // db.collection('visitors').onSnapshot(snapshot => {
         // console.log(snapshot.docs);
-        // setupGuides(snapshot.docs);
+        // setupVisitors(snapshot.docs);
         setupUI(user);
+        renderHost(user);
+        newVisitor(user);
+        showVisitors(user);
       // }).catch(err => {
       //   console.log(err.message)
       // });
     } else {
-      // console.log('user logged out');
       setupUI();
-      // setupGuides([]);
+      renderHost();
+      newVisitor();
+      showVisitors();
+
     }
   });
 
@@ -53,7 +58,7 @@ function signUpFirebase (e) {
 
   firebase.auth().createUserWithEmailAndPassword(emailSignUp, passwordSignUp).then(auth => {
     db.collection("admin").add({
-      name: userName,
+      displayName: userName,
       email: emailSignUp,
       password: passwordSignUp
     }).then(function () {
@@ -97,5 +102,5 @@ loggingOut.addEventListener("click", (e) => {
 //logout button
 document.querySelector("#logOutBtn").addEventListener("click", loggingOut);
 
-//Para exportar a test
+//exports to test
 module.exports = signUpFirebase;

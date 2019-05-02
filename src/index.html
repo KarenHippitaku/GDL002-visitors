@@ -2,74 +2,146 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta firstName="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css'> -->
     <link rel="stylesheet" type="text/css" media="screen" href="style.css">
     <title>Digital Entry</title>
 </head>
 
 <body>
   <header>
-    <nav>
-      <button class="btn loggedIn" id="goHomeBtn"type="button" name="button"></button>
-      <button class="btn loggedOut" id="goToSignUp">Sign up</button>
-      <button class="btn loggedOut" id="goToLogIn">Log in</button>
-      <button class="btn loggedIn" id="logOutBtn" type="button" name="button">Log out</button>
+    <!-- NAVIGATION BAR -->
+    <nav class="z-depth-0 grey lighten-4">
+      <div class="nav-wrapper container">
+        <a href="#" class="brand-logo">
+          <img src='img/logo.svg' style='width: 180px; margin-top: 10px;'>
+        </a>
+        <ul>
+          <li class="loggedIn">
+            <a href="#" class="btn greenBtn navBtn" id="goHomeBtn">Home</a>
+          </li>
+          <li class="loggedIn">
+            <a href="#" class="btn greenBtn navBtn" id="AdminSettingsBtn">Admin</a>
+          </li>
+          <li class="loggedIn">
+            <a href="#" class="btn greenBtn navBtn" id="logOutBtn">Log out</a>
+          </li>
+        </ul>
+        <!-- <button class="btn loggedIn navBtn" id="goHomeBtn" type="button" name="button">Home</button>
+        <button class="btn loggedIn navBtn" id="AdminSettingsBtn" type="button" name="button">Admin</button>
+        <button class="btn loggedOut navBtn" id="goToSignUp">Sign up</button>
+        <button class="btn loggedOut navBtn" id="goToLogIn">Log in</button>
+        <button class="btn loggedIn navBtn" id="logOutBtn" type="button" name="button">Log out</button> -->
 
+      </div>
     </nav>
   </header>
 
+  <section class="loggedOut AdminSign">
+    <!--SIGN UP FORM-->
+    <h5> Sign up to get the most of this app</h5>
+    <form class="loggedOut" id="signUpForm">
+      <input type="text" class="inputTxt userName" name="userName" value="" placeholder="Name">
+      <input type="email" class="txtEmailSignUp" placeholder="Email" required>
+      <input type="password" class="txtPasswordSignUp" placeholder="Password" required>
+      <button class="signUpBtn btn greenBtn">Register</button>
+    </form>
+
+    <!--LOG IN FORM-->
+    <h5>or Log in if you already have an account</h5>
+    <form class="loggedOut" id="logInForm">
+      <input type="email" class="txtEmailLogIn" id="email" placeholder="Email">
+      <input type="password" class="txtPasswordLogIn" id="password" placeholder="Password">
+      <button class="logInBtn btn greenBtn">Log in </button>
+    </form>
+
+  </section>
+
+<!-- FOR THE VISITOR -->
+
+  <!--VISITOR SIGN-->
   <section class="visitorSign loggedIn">
-    <!--VISITOR SIGN-->
-    <h2 class="welcomeSign">Welcome to Digital Entry</h2>
+    <h3 class="welcomeSign">Welcome to Digital Entry</h3>
     <p>Complete these steps to meet your host</p>
-    <input type="text" class="inputTxt" name="visitorsName" value="" placeholder="Your name">
-    <div class="hostList">
-      <p>¿A quién visitas?</p>
-      <select class="hostOptions" id="hostSelector" name="hostSelector">
+    <form class="visitorForm" action="index.html" method="post">
+
+    <input type="text" class="inputTxt" id="visitorsName" value="" placeholder="Your name" required>
+
+    <div class="hostList grey lighten-4">
+      <p>¿Who do you visit?</p>
+      <select class="hostOptions" id="hostSelector" value="" name="hostSelector">
         <option value="host">Laboratoria</option>
         <option value="host">Code Academy</option>
       </select>
-
     </div>
-    <input type="email" class="inputTxt" name="visitorsEmail" value="" placeholder="email">
+
+    <input type="email" class="inputTxt" id="visitorsEmail" value="" placeholder="email">
+
+    <!-- CAMERA -->
     <div class="camera">
-      <video id="video">Video stream not available</video>
-      <button id="cameraBtn">Take a selfie</button>
+      <video class="photoContainer" id="video">Video stream not available</video>
+      <button class="btn" id="cameraBtn">Take a selfie</button>
     </div>
     <canvas id="canvas">
     </canvas>
     <div class="output">
-      <img id="photo" alt="The screen capture will appear in this box">
+      <img class="photo photoContainer" id="photo" value="" alt="The screen capture will appear in this box">
+      <p>Here, this is your gorgeous photo :)</p>
     </div>
-    <button class="btn" id="visitorSignBtn" type="button" name="button">Register</button>
+
+    <button class="btn greenBtn" id="visitorSignBtn" type="button" name="button">Register</button>
+  </form>
   </section>
 
-<section class="loggedOut AdminSign">
-  <p> Sign up to get the most of this app</p>
-  <form class="loggedOut" id="signUpForm">
-    <input type="text" class="inputTxt userName" name="userName" value="" placeholder="name">
-    <input type="email" class="txtEmailSignUp" placeholder="Email" required>
-    <input type="password" class="txtPasswordSignUp" placeholder="Password" required>
-    <button class="signUpBtn btn">Register</button>
-  </form>
+  <section class="visitorRegistered loggedIn">
+    <h2>Perfect!</h2>
+    <h4>Your host will recive an email notification <br>about your arrival 👌</h4>
+    <button class="btn greenBtn" type="button" name="button">Finish</button>
+  </section>
 
-  <!--LOG IN FORM-->
-  <h5>Welcome back! We're happy to see you here</h5>
-  <form class="loggedOut" id="logInForm">
-    <input type="email" class="txtEmailLogIn" id="email" placeholder="Email">
-    <input type="password" class="txtPasswordLogIn" id="password" placeholder="Password">
-    <button class="logInBtn btn">Log in </button>
-  </form>
+<!-- FOR THE ADMIN -->
 
-</section>
-<!--SIGN UP FORM-->
+  <!-- VISITOR LIST -->
+  <section class="visitorList loggedIn" id="contenido">
+     <table class="table">
+         <thead>
+             <tr>
+                 <th scope="col">Id</th>
+                 <th scope="col"> Visitor name </th>
+                 <th scope="col"> Date </th>
+                 <th scope="col"> Email </th>
+                 <th scope="col"> Reason </th>
+                 <!-- <th scope="col"> time for the visit</th> -->
+                 <th scope="col">Erase</th>
+
+             </tr>
+         </thead>
+         <tbody id="tableBody">
+     </table>
+   </section>
+
+   <!-- HOST LIST -->
+
+  <section class="loggedIn list">
+    <h2>Active host list</h2>
+
+    <form id="addHostForm">
+      <input type="text" name="name" value="" placeholder="Host name">
+      <input type="text" name="city" value="" placeholder="Host email">
+      <button type="submit" name="button">Add host</button>
+    </form>
+
+    <ul id="hostList"></ul>
+
+  </section>
 
     <script src="https://www.gstatic.com/firebasejs/5.9.4/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/5.9.4/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/5.9.4/firebase-firestore.js"></script>
-    <script src="auth.js"></script>
-    <script src="visitors.js"></script>
-    <script src="index.js"></script>
+    <script src="scripts/auth.js"></script>
+    <script src="scripts/visitors.js"></script>
+    <script src="scripts/index.js"></script>
+    <script src="scripts/firebase.js"></script>
 </body>
 </html>

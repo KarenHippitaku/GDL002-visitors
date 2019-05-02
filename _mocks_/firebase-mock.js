@@ -16,7 +16,7 @@ const firebase = {
   firestore: firestore
 }
 
-export default jest.fn(() => {
+module.exports = jest.fn(() => {
   return firebase;
 })
 
