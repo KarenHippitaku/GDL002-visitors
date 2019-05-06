@@ -36,7 +36,7 @@ form.addEventListener('submit', (e) => {
     email: form.email.value
   });
   form.name.value = '';
-  form. email. value = '';
+  form.email.value = '';
 })
 
 // real-time listener
@@ -55,18 +55,18 @@ db.collection('hosts').orderBy('name').onSnapshot(snapshot => {
 });
 
 //create new visitor
-const newVisitor = document.querySelector('.visitorForm');
-newVisitor.addEventListener('submit', (e) => {
-  e.preventDefault();
-
-  db.collection('visitors').add({
-    name: newVisitor['name'].value, //you also can use newVisitor.title.value if the id is a single word whit no hyfen
-    host: newVisitor['host'].value,
-    email: newVisitor['email'].value,
-    photo: newVisitor['photo'].value,
-    date: newVisitor['date'].value
-  });
-});
+// const newVisitor = document.querySelector('.visitorForm');
+// newVisitor.addEventListener('submit', (e) => {
+//   e.preventDefault();
+//
+//   db.collection('visitors').add({
+//     name: newVisitor['name'].value,
+//     host: newVisitor['host'].value,
+//     email: newVisitor['email'].value,
+//     photo: newVisitor['photo'].value,
+//     date: newVisitor['date'].value
+//   });
+// });
 
 
 //Show the visitors list
@@ -83,9 +83,9 @@ const showVisitors = (data) => {
         <th scope="row"> ${doc.id} </th>
           <td>${doc.data().name}</td>
           <td>${doc.data().date}</td>
-          <td> ${doc.data().email}</td>
-          <td> ${doc.data().host}</td>
-          <td> ${doc.data().photo}</td>
+          <td>${doc.data().email}</td>
+          <td>${doc.data().host}</td>
+          <td>${doc.data().photo}</td>
 
 
           <td><button onclick="eliminar('${doc.id}')" title="Boton Eliminar">x</button></td>

@@ -23,12 +23,12 @@ const setupUI = (user) => {
 };
 
 //Button to show clean visitor register
-const homeBtn = () => {
-  document.getElementById(".visitorRegistered").style.display = 'none';
+const goHomeBtn = () => {
+  document.querySelector(".visitorRegistered").style.display = 'none';
   document.querySelector(".visitorSign").style.display = 'block';
   // document.querySelector(".visitorForm").reset();
 };
-document.getElementById("goHomeBtn").addEventListener('click', homeBtn);
+document.querySelectorAll(".goHomeBtn").addEventListener('click', goHomeBtn);
 
 //Button to get register info
 const visitorSignBtn = () => {

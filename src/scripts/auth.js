@@ -26,24 +26,24 @@ const config = {
       // console.log('user logged in', user);
 
       // get data
-      // db.collection('visitors').get().then(snapshot => {
+      db.collection('visitors').get().then(snapshot => {
 
       // realtime listener (just subtitute .get().then whit .onSnapshot)
-      // db.collection('visitors').onSnapshot(snapshot => {
+      db.collection('hosts').onSnapshot(snapshot => {
         // console.log(snapshot.docs);
-        // setupVisitors(snapshot.docs);
         setupUI(user);
-        renderHost(user);
-        newVisitor(user);
-        showVisitors(user);
+        renderHost(snapshot.docs);
+        // newVisitor(snapshot.docs);
+        showVisitors(snapshot.docs);
       // }).catch(err => {
       //   console.log(err.message)
-      // });
+      });
+    });
     } else {
       setupUI();
-      renderHost();
-      newVisitor();
-      showVisitors();
+      renderHost([]);
+      // newVisitor([]);
+      showVisitors([]);
 
     }
   });
@@ -98,6 +98,26 @@ loggingOut.addEventListener("click", (e) => {
     console.log("User logged out");
   });
 });
+
+//add visitor
+const visitorForm = document.querySelector('.visitorForm');
+visitorForm.addEventListener('submit', (e) => {
+  e.preventDefault();
+
+  db.collection('visitors').add({
+    name: newVisitor['name'].value, //you also can use yourFormName.title.value if the id is a single word whit no hyfen
+    host: newVisitor['host'].value,
+    email: newVisitor['email'].value,
+    photo: newVisitor['photo'].value,
+    date: newVisitor['date'].value
+  }).then(() => {
+    //reset form
+    visitorForm.reset();
+    }).catch(err => {
+        console.log(err.message)
+  });
+});
+
 
 //logout button
 document.querySelector("#logOutBtn").addEventListener("click", loggingOut);
