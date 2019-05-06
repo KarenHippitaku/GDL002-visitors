@@ -27,6 +27,7 @@ nav {
 
 a {
   text-decoration: none;
+  color: #fff;
 }
 
 .navBtn {
@@ -35,11 +36,16 @@ a {
 
 .btn {
   border-radius: .4rem;
-  padding: 0.1rem;
+  margin: 0.5rem;
+  padding: 0.2rem;
+  height: auto;
+  width: auto;
+  font-size: 1rem;
 }
 
 .greenBtn {
   background-color: #00bfa2;
+  color: #fff;
 }
 
 .photoContainer {
@@ -87,14 +93,14 @@ a {
 .contentarea {
   font-size: 1rem;
   font-family: "Lucida Grande", "Arial", sans-serif;
-  width: 760px;
+  width: 90rem;
 }
 
 .list{
     background: #fff;
-    max-width: 960px;
-    margin: 30px auto;
-    padding:  20px 30px;
+    max-width: 100rem;
+    margin: 2.5rem 3rem;
+    padding:  1.5rem 2.5rem;
     border-radius: 10px 120px 10px 10px;
     box-shadow: 1px 3px 5px rgba(0,0,0,0.1)
 }
@@ -105,17 +111,17 @@ ul{
 }
 
 li{
-    padding: 20px;
+    padding: 1rem;
     background: #f6f6f6;
-    font-size: 20px;
+    /* font-size: 1.5rem; */
     color: #555;
     position: relative;
-    border-bottom: 1px solid #e6e6e6;
-    height: 46px;
+    border-bottom: 0.1rem solid #e6e6e6;
+    height: auto;
 }
 
 li:nth-child(even){
-    padding: 20px;
+    padding: 1rem;
     background: #f2f2f2;
 }
 
@@ -124,21 +130,22 @@ li span{
 }
 
 li span:nth-child(2){
-    font-size: 16px;
-    margin-top: 6px;
+    font-size: 1rem;
+    margin-top: .5rem;
     color: #999;
 }
 
 li div{
     position: absolute;
     top: 0;
-    right: 0px;
+    right: 0;
     background: rgba(255,255,255,0.6);
-    width: 40px;
+    width: 3rem;
     text-align: center;
-    padding: 10px 0;
+    /* padding:0.5rem 0; */
     font-weight:  bold;
     cursor:  pointer;
+    color: #00bfa2
 }
 
 form input{
@@ -146,18 +153,18 @@ form input{
     width: 38%;
     margin: 0;
     border: 0;
-    border-bottom: 1px solid #eee;
+    border-bottom: 0.1rem solid #eee;
     margin: 0 1%;
-    padding: 10px;
+    padding: 1rem;
     display: block;
     box-sizing: border-box;
-    font-size: 18px;
+    font-size: 1.5rem;
 }
 
 form input:focus{
     outline: none;
-    border-bottom: 3px solid #88236f;
-    padding-bottom: 8px;
+    border-bottom: 0.2rem solid #88236f;
+    padding-bottom: 0´5rem;
     transition: all ease 0.2s;
 }
 
