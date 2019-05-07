@@ -21,13 +21,29 @@ body {
   margin-left: 2rem;
 }
 
-nav {
+header {
+  display: flex;
+  justify-content: space-between;
   border-bottom: solid #00bfa2;
 }
 
+.brandLogo {
+  width: 20rem;
+  margin-top: 10px;
+}
+
 a {
+  /* display: inline-flex; */
+  float: left;
   text-decoration: none;
   color: #fff;
+}
+
+.navLi {
+  display: inline-grid;
+  float: left;
+  background: none;
+  border: none;
 }
 
 .navBtn {
@@ -37,8 +53,8 @@ a {
 .btn {
   border-radius: .4rem;
   margin: 0.5rem;
-  padding: 0.2rem;
-  height: auto;
+  padding: 1%;
+  height: 3rem;
   width: auto;
   font-size: 1rem;
 }
@@ -47,6 +63,7 @@ a {
   background-color: #00bfa2;
   color: #fff;
 }
+
 
 .photoContainer {
   background-color: rgba(10, 10, 10, 0.5);
@@ -96,6 +113,13 @@ a {
   width: 90rem;
 }
 
+th {
+    display: table-cell;
+    font-weight: bold;
+    text-align: center;
+    vertical-align: center;
+}
+
 .list{
     background: #fff;
     max-width: 100rem;
@@ -113,7 +137,6 @@ ul{
 li{
     padding: 1rem;
     background: #f6f6f6;
-    /* font-size: 1.5rem; */
     color: #555;
     position: relative;
     border-bottom: 0.1rem solid #e6e6e6;
@@ -141,8 +164,9 @@ li div{
     right: 0;
     background: rgba(255,255,255,0.6);
     width: 3rem;
+    height: auto;
     text-align: center;
-    /* padding:0.5rem 0; */
+    padding: 2rem 0;
     font-weight:  bold;
     cursor:  pointer;
     color: #00bfa2
@@ -172,4 +196,42 @@ form:after{
     content: '';
     clear: both;
     display: block;
+}
+
+select {
+    /* -webkit-appearance: menulist; */
+    /* box-sizing: border-box; */
+    /* align-items: center; */
+    /* white-space: pre; */
+    /* -webkit-rtl-ordering: logical; */
+    color: black;
+    background-color: white;
+    cursor: default;
+    border-radius: : 0.5rem;
+    border-width: 0.1rem;
+    border: solid #eee;
+    /* border-color: initial;
+    border-image: initial; */
+    height: 2rem;
+    width: 10rem;
+    text-rendering: auto;
+    /* color: initial; */
+    letter-spacing: normal;
+    word-spacing: normal;
+    text-transform: none;
+    text-indent: 0px;
+    text-shadow: none;
+    display: inline-block;
+    text-align: start;
+    margin: 0em;
+    /* font: 400 13.3333px Arial; */
+}
+
+.hosts {
+  float: left;
+  margin: 0;
+  border: 0;
+  padding: 1rem;
+  display: block;
+  font-size: 1.5rem;
 }
