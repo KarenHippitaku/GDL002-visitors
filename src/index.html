@@ -14,17 +14,17 @@
     <!-- NAVIGATION BAR -->
     <nav class="z-depth-0 grey lighten-4">
       <div class="nav-wrapper container">
-        <a href="#" class="brand-logo">
-          <img src='img/img-logo.svg' style='width: auto; margin-top: 10px;'>
+        <a href="#">
+          <img src="img/img-logo.svg" class="brandLogo">
         </a>
         <ul>
-          <li class="loggedIn">
+          <li class="loggedIn navLi">
             <a href="#" class="btn greenBtn navBtn gohomeBtn" id="HomeBtn">Home</a>
           </li>
-          <li class="loggedIn">
+          <li class="loggedIn navLi">
             <a href="#" class="btn greenBtn navBtn" id="AdminSettingsBtn">Admin</a>
           </li>
-          <li class="loggedIn">
+          <li class="loggedIn navLi">
             <a href="#" class="btn greenBtn navBtn" id="logOutBtn">Log out</a>
           </li>
         </ul>
@@ -62,22 +62,8 @@
 
   <!--VISITOR SIGN-->
   <section class="visitorSign loggedIn">
-    <h3 class="welcomeSign">Welcome to Digital Entry</h3>
+    <h2 class="welcomeSign">Welcome to Digital Entry</h2>
     <p>Complete these steps to meet your host</p>
-    <form class="visitorForm" action="index.html" method="post">
-
-    <input type="text" class="inputTxt" id="visitorsName" value="" placeholder="Your name" required>
-
-    <div class="hostList grey lighten-4">
-      <p>¿Who do you visit?</p>
-      <select class="hostOptions" id="hostSelector" value="" name="hostSelector">
-        <option value="host">Laboratoria</option>
-        <option value="host">Code Academy</option>
-      </select>
-    </div>
-
-    <input type="email" class="inputTxt" id="visitorsEmail" value="" placeholder="email">
-
     <!-- CAMERA -->
     <div class="camera">
       <video class="photoContainer" id="video">Video stream not available</video>
@@ -85,12 +71,33 @@
     </div>
     <canvas id="canvas">
     </canvas>
-    <div class="output">
-      <img class="photo photoContainer" id="photo" value="" alt="The screen capture will appear in this box">
+    <div class="output" hidden>
+      <img class="photo photoContainer" id="photo" alt="The screen capture will appear in this box">
       <p>Here, this is your gorgeous photo :)</p>
+
+    <form class="visitorForm" action="index.html" method="post">
+
+    <input type="text" class="inputTxt" id="visitorsName" value="" placeholder="Your name" required>
+
+    <div class="hosts grey lighten-4">
+      <p>¿Who do you visit?</p>
+      <select class="hostOptions" id="hostSelector" value="host" name="hostSelector">
+        <option id="host"></option>
+      </select>
     </div>
 
-    <button class="btn greenBtn" id="visitorSignBtn" type="submit" name="button">Register</button>
+    <div class="inputTxt grey lighten-4">
+      <input type="email" class="inputTxt" id="visitorsEmail" value="" placeholder="email">
+    </div>
+
+    <!-- <div class="inputTxt">
+      <label for="time">Time of arrival</label>
+      <input  type="text" class="inputTxt" id="timeIn" required>
+    </div> -->
+
+    </div>
+
+    <input class="btn greenBtn" id="visitorSignBtn" type="submit" placeholder="Register">
   </form>
   </section>
 
@@ -103,7 +110,7 @@
 <!-- FOR THE ADMIN -->
 
   <!-- VISITOR LIST -->
-  <section class="visitorList loggedIn" id="contenido">
+  <section class="visitorList loggedIn list" id="contenido">
      <table class="table">
          <thead>
              <tr>
@@ -113,11 +120,17 @@
                  <th scope="col"> Email </th>
                  <th scope="col"> Reason </th>
                  <!-- <th scope="col"> time for the visit</th> -->
-                 <th scope="col">Erase</th>
+                 <th scope="col"></th>
 
              </tr>
          </thead>
          <tbody id="tableBody">
+           <tr>
+             <th scope="col"></th>
+             <td></td>
+             <td></td>
+           </tr>
+         </tbody>
      </table>
    </section>
 
@@ -127,8 +140,8 @@
     <h2>Active host list</h2>
 
     <form id="addHostForm">
-      <input type="text" name="name" value="" placeholder="Host name">
-      <input type="text" name="email" value="" placeholder="Host email">
+      <input type="text" name="name" id="hostname" placeholder="Host name">
+      <input type="text" name="email" id="hostemail" placeholder="Host email">
       <button type="submit" name="button" class="btn greenBtn" >Add host</button>
     </form>
 
@@ -143,5 +156,6 @@
     <script src="scripts/visitors.js"></script>
     <script src="scripts/index.js"></script>
     <script src="scripts/firebase.js"></script>
+    <script src="scripts/camera.js"></script>
 </body>
 </html>

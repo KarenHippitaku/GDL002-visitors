@@ -1,101 +1,100 @@
-//for camera function
-(function() {
-  // The width and height of the captured photo. We will set the
-  // width to the value defined here, but the height will be
-  // calculated based on the aspect ratio of the input stream.
+const visitorList = document.querySelector('.visitorList');
+const visitorForm = document.querySelector('.visitorForm');
+const visitorSign = document.querySelector('#visitorSignBtn');
+let table = document.querySelector('#tableBody');
 
-  var width = 320;    // We will scale the photo width to this
-  var height = 0;     // This will be computed based on the input stream
+//add visitor data
+visitorSign.addEventListener('submit', (e) => {
+  e.preventDefault(e);
+  let name = document.querySelector('#visitorsName').value;
+  let host = document.querySelector('#host').value;
+  let time = newDate();
+  let email = document.querySelector('#visitorsEmail').value;
 
-  // |streaming| indicates whether or not we're currently streaming
-  // video from the camera. Obviously, we start at false.
+  console.log(name, host, time, email);
+  db.collection('visitors').add({
+    visitor: name,
+    reason: host,
+    arrival: time,
+    moreInfo: email,
+    photo: photoUrl
+  }).then(function(docRef) {
+    Email.send({
+      SecureToken : "bfcd0384-8e4b-4639-9ad6-22a9c5fcfba9",
+      To : host,
+      From : "hippitaku@gmail.com",
+      Subject : "Digital-Entry",
+      Body : `Hola, ya llegó tu cita. ${name}, te espera en la recpeción.
+      Si necesitas reagendar, envíale un mensaje a ${email}`,
+    }).then(message => alert(message)
+      );
+  }).catch(error => {
+    console.error("Error adding document: ", error);
+  });
+});
 
-  var streaming = false;
+//read visitors data
+db.collection('visitors').onSnapshot((querySnapshot) => {
+  table.innerHTML = '';
+  querySnapshot.forEach((doc) => {
+    console.log(`${doc.id} => ${doc.data()}`);
+    table.innerHTML += `
+    <tr>
+      <th scope="col">${doc.data().name}</th>
+      <td>${doc.data().host}</td>
+      <td>${doc.data().time}</td>
+      <td>${doc.data().photo}</td>
+      <td>${doc.data().email}</td>
+    </tr>
+    `
+  });
+});
 
-  // The various HTML elements we need to configure or control. These
-  // will be set by the startup() function.
+//add visitor
+// visitorForm.addEventListener('submit', (e) => {
+  //   e.preventDefault();
+  //
+  //   db.collection('visitors').add({
+    //     name: visitorForm.name.value, //you also can use yourFormName.title.value if the id is a single word whit no hyfen
+    //     host: visitorForm.host.value,
+    //     email: visitorForm.email.value,
+    //     photo: visitorForm.photo.value
+    //   }).then(() => {
+      //     //reset form
+      //     visitorForm.reset();
+      //   }).catch(err => {
+        //     console.log(err.message);
+        //   });
+        // });
 
-  var video = null;
-  var canvas = null;
-  var photo = null;
-  var cameraBtn = null;
-
-  function startup() {
-    video = document.getElementById('video');
-    canvas = document.getElementById('canvas');
-    photo = document.getElementById('photo');
-    cameraBtn = document.getElementById('cameraBtn');
-
-    navigator.mediaDevices.getUserMedia({video: true, audio: false})
-    .then(function(stream) {
-      video.srcObject = stream;
-      video.play();
-    })
-    .catch(function(err) {
-      console.log("An error occurred: " + err);
-    });
-
-    video.addEventListener('canplay', function(ev){
-      if (!streaming) {
-        height = video.videoHeight / (video.videoWidth/width);
-
-        // Firefox currently has a bug where the height can't be read from
-        // the video, so we will make assumptions if this happens.
-
-        if (isNaN(height)) {
-          height = width / (4/3);
-        }
-
-        video.setAttribute('width', width);
-        video.setAttribute('height', height);
-        canvas.setAttribute('width', width);
-        canvas.setAttribute('height', height);
-        streaming = true;
-      }
-    }, false);
-
-    cameraBtn.addEventListener('click', function(ev){
-      takepicture();
-      ev.preventDefault();
-    }, false);
-
-    clearphoto();
-  }
-
-  // Fill the photo with an indication that none has been
-  // captured.
-
-  function clearphoto() {
-    var context = canvas.getContext('2d');
-    // context.fillStyle = "#AAA";
-    context.fillRect(0, 0, canvas.width, canvas.height);
-
-    var data = canvas.toDataURL('image/png');
-    photo.setAttribute('src', data);
-  }
-
-  // Capture a photo by fetching the current contents of the video
-  // and drawing it into a canvas, then converting that to a PNG
-  // format data URL. By drawing it on an offscreen canvas and then
-  // drawing that to the screen, we can change its size and/or apply
-  // other changes before drawing it.
-
-  function takepicture() {
-    var context = canvas.getContext('2d');
-    if (width && height) {
-      canvas.width = width;
-      canvas.height = height;
-      context.drawImage(video, 0, 0, width, height);
-
-      var data = canvas.toDataURL('image/png');
-      photo.setAttribute('src', data);
-      console.log(data);
-    } else {
-      clearphoto();
-    }
-  }
-
-  // Set up our event listener to run the startup process
-  // once loading is complete.
-  window.addEventListener('load', startup, false);
-})();
+//Show the visitors list
+// const showVisitors = (data) => {
+  //
+  //   if (data.length) {
+    //     let html = '';
+    //     data.forEach(doc => {
+      //       // const user = firebase.auth().currentUser.uid;
+      //       const visitor = doc.data();
+      //       // console.log(visitor);
+      //       const tableBody = `
+      //       <tr>
+      //         <th scope="row"> ${doc.id} </th>
+      //           <td>${doc.data().name}</td>
+      //           <td>${doc.data().date}</td>
+      //           <td>${doc.data().email}</td>
+      //           <td>${doc.data().host}</td>
+      //           <td>${doc.data().photo}</td>
+      //
+      //
+      //           <td><button onclick="delete('${doc.id}')" title="delete btn">x</button></td>
+      //
+      //       </tr>
+      //
+      //       `;
+      //         html += tableBody;
+      //       });
+      //       visitorList.innerHTML = html;
+      //     }else {
+        //       visitorList.innerHTML = '';
+        //     };
+        // };

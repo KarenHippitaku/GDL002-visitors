@@ -1,6 +1,6 @@
-const hostList = document.querySelector("#hostList");
-const form = document.querySelector("#addHostForm");
-const visitorList = document.querySelector(".visitorList")
+const hostList = document.querySelector('#hostList');
+const hostForm = document.querySelector('#addHostForm');
+const hostSelector = document.querySelector('#hostSelector');
 
 //create a host and render it
 function renderHost(doc){
@@ -25,19 +25,19 @@ function renderHost(doc){
     e.stopPropagation();
     let id = e.target.parentElement.getAttribute('data-id');
     db.collection('hosts').doc(id).delete();
-  })
+  });
 }
 
 //saving data
-form.addEventListener('submit', (e) => {
+hostForm.addEventListener('submit', (e) => {
   e.preventDefault();
   db.collection('hosts').add({
-    name: form.name.value,
-    email: form.email.value
+    name: hostForm.name.value,
+    email: hostForm.email.value
   });
-  form.name.value = '';
-  form.email.value = '';
-})
+  hostForm.name.value = '';
+  hostForm.email.value = '';
+});
 
 // real-time listener
 db.collection('hosts').orderBy('name').onSnapshot(snapshot => {
@@ -46,7 +46,7 @@ db.collection('hosts').orderBy('name').onSnapshot(snapshot => {
   changes.forEach(change => {
     // console.log(change.doc.data());
     if(change.type == 'added'){
-      renderHost(change.doc)
+      renderHost(change.doc);
     } else if (change.type == 'removed'){
       let li = hostList.querySelector('[data-id=' + change.doc.id+ ']');
       hostList.removeChild(li);
@@ -54,49 +54,12 @@ db.collection('hosts').orderBy('name').onSnapshot(snapshot => {
   });
 });
 
-//create new visitor
-// const newVisitor = document.querySelector('.visitorForm');
-// newVisitor.addEventListener('submit', (e) => {
-//   e.preventDefault();
-//
-//   db.collection('visitors').add({
-//     name: newVisitor['name'].value,
-//     host: newVisitor['host'].value,
-//     email: newVisitor['email'].value,
-//     photo: newVisitor['photo'].value,
-//     date: newVisitor['date'].value
-//   });
-// });
-
-
-//Show the visitors list
-const showVisitors = (data) => {
-
-  if (data.length) {
-    let html = '';
-    data.forEach(doc => {
-      // const user = firebase.auth().currentUser.uid;
-      const visitor = doc.data();
-      // console.log(visitor);
-      const tableBody = `
-      <tr>
-        <th scope="row"> ${doc.id} </th>
-          <td>${doc.data().name}</td>
-          <td>${doc.data().date}</td>
-          <td>${doc.data().email}</td>
-          <td>${doc.data().host}</td>
-          <td>${doc.data().photo}</td>
-
-
-          <td><button onclick="eliminar('${doc.id}')" title="Boton Eliminar">x</button></td>
-
-      </tr>
-
-      `;
-        html += tableBody
-      });
-      visitorList.innerHTML = html;
-    }else {
-      visitorList.innerHTML = ''
-    };
-};
+//show hosts in selector
+db.collection('hosts').get().then((querySnapshot) => {
+  hostSelector.innerHTML = '';
+  querySnapshot.forEach((doc) => {
+    hostSelector.innerHTML += `
+    <option value="${doc.data().email}">${doc.data().name}</option>
+    `
+  });
+});
