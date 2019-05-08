@@ -4,7 +4,7 @@ const loggedOut = document.querySelectorAll(".loggedOut");
 
 const setupUI = (user) => {
   if (user) {
-    //show account info
+    //show visitors info
     // const html = `
     //   <div>Logged in as ${user.email}</div>
     // `;
@@ -14,15 +14,16 @@ const setupUI = (user) => {
     loggedIn.forEach(item => item.style.display = 'block');
     loggedOut.forEach(item => item.style.display = 'none');
   } else {
-    //hide account info
+    //hide visitors info
     // visitorSign.innerHTML = '';
+    
     //toggle UI elements
     loggedIn.forEach(item => item.style.display = 'none');
     loggedOut.forEach(item => item.style.display = 'block');
   };
 };
 
-//Button to show clean visitor register
+//Button to show hide visitor register
 const goHomeBtn = () => {
   document.querySelector(".visitorRegistered").style.display = 'none';
   document.querySelector(".visitorSign").style.display = 'block';
